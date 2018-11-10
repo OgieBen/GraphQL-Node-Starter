@@ -1,10 +1,10 @@
 {
-  "name": "graphql",
+  "name": "graphql-server",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node app/app",
+    "start": "node index",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -12,6 +12,9 @@
   "dependencies": {
     "babel-preset-es2015": "^6.24.1",
     "babel-register": "^6.26.0",
-    "express": "^4.16.3"
+    "debug": "^4.1.0",
+    "express": "^4.16.3",
+    "express-graphql": "^0.7.1",
+    "graphql": "^14.0.2"
   }
 }
