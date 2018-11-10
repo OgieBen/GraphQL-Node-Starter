@@ -1,23 +1,11 @@
-import graphQlHttp from 'express-graphql';
-import {GraphQLObjectType, GraphQLString, GraphQLSchema} from 'graphql';
+import express from 'express';
+import rootSchema from './data/schema/rootSchema'
+import  graphqlHttp  from 'express-graphql';
 
 
-const query = new GraphQLObjectType({
-        name: "RootQuery",
-        description: ""
+const app = express();
 
-        field : {
-            viewer: {
-                type: GraphQLString,
-                resolver() {
-                    viewer: "viewer!";
-                }
-            }
-        }
-});
 
-let schema  = new GraphQLSchema({
-    query: query,
-});
+app.use('/graphql', graphQlHttp({schema: rootSchema}))
 
-export default schema
+export default app;
