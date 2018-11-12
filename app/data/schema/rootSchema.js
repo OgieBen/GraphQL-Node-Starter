@@ -11,7 +11,7 @@ let inMemoryDataStore = {};
 
 const topQuery = new GraphQLObjectType({
     name: "TopQuery",
-    description: "A simple demostration of query",
+    description: "A simple demonstration of query",
     fields: {
         viewer: {
             type: GraphQLString,
@@ -38,7 +38,7 @@ const topQuery = new GraphQLObjectType({
 
 const topMutation = new GraphQLObjectType({
     name: 'TopMutation',
-    description: 'A demostration of mutation',
+    description: 'A demonstration of mutation',
     fields: {
         setNode: {
             type: GraphQLString,
