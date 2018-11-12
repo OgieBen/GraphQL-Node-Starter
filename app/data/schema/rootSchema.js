@@ -5,23 +5,17 @@ import {
     GraphQLString,
     GraphQLSchema
 } from 'graphql';
-
+import ObjectInterface from '../interfaces/ObjectInterface';
 
 let inMemoryDataStore = {};
 
 const topQuery = new GraphQLObjectType({
     name: "TopQuery",
     description: "A simple demonstration of query",
+    
     fields: {
-        viewer: {
-            type: GraphQLString,
-            resolve() {
-                return "viewer!";
-            }
-        },
-
         node: {
-            type: GraphQLString,
+            type: ObjectInterface,
             args: {
                 id: {
                     type: new GraphQLNonNull(GraphQLID)
