@@ -2,8 +2,6 @@ import app from '../app';
 import http from 'http';
 import debug from 'debug';
 
-// const app = require('../app');
-// const http = require('http');
 
 let _debug = debug('app:server');
 
@@ -24,6 +22,5 @@ function onError(error){
 }
 
 function onListening(){
-    console.log("Server is listeneing on port: " + server.address().port);
-    _debug("Server is listeneing on port: " + server.address().port);
+    console.log("Server is listeneing on port: " + 'http://localhost:' + server.address().port);
 }
