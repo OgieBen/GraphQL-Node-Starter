@@ -1,21 +1,68 @@
-import {GraphQLObjectType, GraphQLString, GraphQLSchema} from 'graphql';
+import {
+    GraphQLObjectType,
+    GraphQLNonNull,
+    GraphQLID,
+    GraphQLString,
+    GraphQLSchema
+} from 'graphql';
 
 
-const query = new GraphQLObjectType({
-        name: "RootQuery",
-        description: "",
-        fields:{
-            viewer: {
-                type: GraphQLString,
-                resolve() {
-                    return "viewer!";
-                }
+let inMemoryDataStore = {};
+
+const topQuery = new GraphQLObjectType({
+    name: "TopQuery",
+    description: "A simple demostration of query",
+    fields: {
+        viewer: {
+            type: GraphQLString,
+            resolve() {
+                return "viewer!";
             }
+        },
+
+        node: {
+            type: GraphQLString,
+            args: {
+                id: {
+                    type: new GraphQLNonNull(GraphQLID)
+                },
+            },
+
+            resolve(source, args) {
+                return inMemoryDataStore[args.key];
+            }
+
         }
+    }
 });
 
-let schema  = new GraphQLSchema({
-    query: query,
+const topMutation = new GraphQLObjectType({
+    name: 'TopMutation',
+    description: 'A demostration of mutation',
+    fields: {
+        setNode: {
+            type: GraphQLString,
+            args: {
+                id: {
+                    type: new GraphQLNonNull(GraphQLID)
+                },
+                value: {
+                    type: new GraphQLNonNull(GraphQLString),
+                }
+            },
+
+            resolve(source, args) {
+                inMemoryDataStore[args.key] = args.value;
+                return inMemoryDataStore[args.key]
+            }
+        }
+    }
+});
+
+
+let schema = new GraphQLSchema({
+    query: topQuery,
+    mutation: topMutation,
 });
 
 export default schema
