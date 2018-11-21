@@ -1,4 +1,4 @@
-export default class Repo {
+export class Repo {
     constructor() {
 
     }
@@ -15,6 +15,6 @@ export default class Repo {
      * @param {Object} source 
      */
     handleTypeResolver(source) {
-    
+        
     }
 }
