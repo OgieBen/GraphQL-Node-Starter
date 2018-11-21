@@ -1,9 +1,9 @@
-import { GraphQLInterface, GraphQLNonNull, GraphQLID } from 'graphql';
+import  { GraphQLInterfaceType, GraphQLNonNull, GraphQLID } from 'graphql';
 import { Repo } from '../repo/Repo'
 
 let repo = new Repo();
 
-let ObjectInterface = new GraphQLInterface({
+let ObjectInterface = new GraphQLInterfaceType({
     name: "ObjectInterface",
     fields: {
         id: {
@@ -11,9 +11,9 @@ let ObjectInterface = new GraphQLInterface({
         },
 
         // source: current data
-        resolveType(source){
-            repo.handleTypeResolver(source);
-        }
+        // resolveType(source){
+        //     repo.handleTypeResolver(source);
+        // }
     }
 });
 
